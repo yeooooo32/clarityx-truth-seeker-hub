@@ -19,9 +19,7 @@ export const Hero = () => {
         
         <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto animate-fade-in-up" style={{
         animationDelay: "0.2s"
-      }}>
-          ClarityX lets you instantly verify headlines, posts, and links — powered by AI and truth.
-        </p>
+      }}>ClarityX lets you instantly verify headlines, posts, and links  powered by AI and truth.</p>
         
         <div className="flex justify-center animate-fade-in-up" style={{
         animationDelay: "0.4s"

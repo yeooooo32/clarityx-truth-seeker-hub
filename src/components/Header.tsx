@@ -28,12 +28,8 @@ export const Header = () => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56 bg-gray-900 border border-white/10 text-white">
-              <DropdownMenuItem className="hover:bg-white/10 cursor-pointer">
-                Profile
-              </DropdownMenuItem>
-              <DropdownMenuItem className="hover:bg-white/10 cursor-pointer">
-                Dashboard
-              </DropdownMenuItem>
+              
+              
               <DropdownMenuSeparator className="bg-white/10" />
               <DropdownMenuItem className="hover:bg-white/10 cursor-pointer">
                 Settings
