@@ -1,16 +1,11 @@
-
 import { Link } from "react-router-dom";
-
 export const Footer = () => {
-  return (
-    <footer className="bg-black/30 border-t border-gray-800 py-12 px-6">
+  return <footer className="bg-black/30 border-t border-gray-800 py-12 px-6">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 bg-gradient-to-br from-clarityx-purple to-clarityx-blue rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">CX</span>
-            </div>
-            <span className="text-xl font-bold text-white">ClarityX</span>
+            
+            <span className="text-xl font-bold text-zinc-700">ClarityX</span>
           </div>
           <p className="text-gray-400 mb-4">
             Combat misinformation with AI-powered real-time fact-checking.
@@ -68,6 +63,5 @@ export const Footer = () => {
       <div className="max-w-6xl mx-auto mt-12 pt-6 border-t border-gray-800 text-center">
         <p className="text-gray-400">© {new Date().getFullYear()} ClarityX. All rights reserved.</p>
       </div>
-    </footer>
-  );
+    </footer>;
 };
