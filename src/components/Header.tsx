@@ -22,13 +22,6 @@ export const Header = () => {
           <Button 
             variant="ghost" 
             className="text-white hover:bg-white/10"
-            onClick={() => scrollToSection('testimonials')}
-          >
-            Testimonials
-          </Button>
-          <Button 
-            variant="ghost" 
-            className="text-white hover:bg-white/10"
             onClick={() => scrollToSection('pricing')}
           >
             Pricing

@@ -63,11 +63,11 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Add custom ClarityX colors
-				'clarityx-purple': '#8B5CF6',
-				'clarityx-blue': '#3B82F6',
-				'clarityx-cyan': '#22D3EE',
-				'clarityx-dark': '#0F1218'
+				// Updated ClarityX colors to grayscale
+				'clarityx-purple': '#555555',
+				'clarityx-blue': '#333333',
+				'clarityx-cyan': '#888888',
+				'clarityx-dark': '#121212'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -99,6 +99,14 @@ export default {
 						boxShadow: '0 0 30px 5px rgba(139, 92, 246, 0.7)'
 					}
 				},
+				'slow-pulse-glow': {
+					'0%, 100%': {
+						boxShadow: '0 0 15px 0 rgba(85, 85, 85, 0.5)'
+					},
+					'50%': {
+						boxShadow: '0 0 25px 3px rgba(85, 85, 85, 0.6)'
+					}
+				},
 				'fade-in-up': {
 					'0%': {
 						opacity: '0',
@@ -114,6 +122,7 @@ export default {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'pulse-glow': 'pulse-glow 2s infinite ease-in-out',
+				'slow-pulse-glow': 'slow-pulse-glow 4s infinite ease-in-out',
 				'fade-in-up': 'fade-in-up 0.5s ease-out forwards'
 			}
 		}
