@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,12 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Add custom ClarityX colors
+				'clarityx-purple': '#8B5CF6',
+				'clarityx-blue': '#3B82F6',
+				'clarityx-cyan': '#22D3EE',
+				'clarityx-dark': '#0F1218'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +90,31 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'pulse-glow': {
+					'0%, 100%': {
+						boxShadow: '0 0 15px 0 rgba(139, 92, 246, 0.5)'
+					},
+					'50%': {
+						boxShadow: '0 0 30px 5px rgba(139, 92, 246, 0.7)'
+					}
+				},
+				'fade-in-up': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(10px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-glow': 'pulse-glow 2s infinite ease-in-out',
+				'fade-in-up': 'fade-in-up 0.5s ease-out forwards'
 			}
 		}
 	},
