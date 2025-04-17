@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import { toast } from "@/components/ui/use-toast";
+import { GlowButton } from "./ui/custom-button";
 
 type PricingPlan = {
   id: string;
@@ -14,54 +15,65 @@ type PricingPlan = {
   features: string[];
   popular?: boolean;
   buttonText: string;
+  buttonVariant: "default" | "premium" | "free";
 };
 
 const plans: PricingPlan[] = [
   {
     id: "free",
     name: "Free",
-    description: "Basic verification for individual users",
+    description: "Basic fact-checking tools for everyone",
     price: "$0",
     yearlyPrice: "$0",
     features: [
-      "10 fact checks per day",
-      "Basic verification",
-      "Browser extension",
-      "Web access"
+      "Basic real-time claim verification (5 claims/month)",
+      "Simple True/False verdict with brief evidence",
+      "Track regional misinformation trends",
+      "Compare claims against limited verified sources"
     ],
-    buttonText: "Get Started"
+    buttonText: "Get Started Free",
+    buttonVariant: "free"
   },
   {
     id: "pro",
     name: "Pro",
-    description: "Unlimited scans for power users",
-    price: "$12",
-    yearlyPrice: "$9",
+    description: "Advanced tools for professionals",
+    price: "$20",
+    yearlyPrice: "$17",
     popular: true,
     features: [
-      "Unlimited fact checks",
-      "Priority processing",
-      "Advanced verification metrics",
-      "Email alerts for trending misinformation",
-      "Source verification"
+      "Real-time verification (50 claims/month)",
+      "Detailed verdict with in-depth evidence",
+      "Track misinformation with advanced analytics",
+      "Wide range of verified source comparison",
+      "Camera-based verification (ClarityX Lens)",
+      "High-accuracy deepfake detection",
+      "Misinformation leaderboard with rewards",
+      "Real-time Scout alerts while browsing"
     ],
-    buttonText: "Start Free Trial"
+    buttonText: "Upgrade to Pro",
+    buttonVariant: "default"
   },
   {
-    id: "team",
-    name: "Team",
-    description: "Enterprise-grade tools for organizations",
-    price: "$49",
-    yearlyPrice: "$39",
+    id: "premium",
+    name: "Premium",
+    description: "Comprehensive tools for organizations",
+    price: "$50",
+    yearlyPrice: "$42",
     features: [
-      "Everything in Pro",
-      "Team dashboard & analytics",
-      "API access",
-      "Custom integrations",
-      "Dedicated support",
-      "Team training"
+      "Unlimited claim verification with premium sources",
+      "Comprehensive verdicts with advanced context",
+      "Global tracking with personalized insights",
+      "Most comprehensive source validation",
+      "Advanced camera-based detection for all content",
+      "Premium deepfake detection with higher accuracy",
+      "Enhanced leaderboard with exclusive rewards",
+      "Enhanced Scout alerts with better accuracy",
+      "Mobile deepfake detection",
+      "Voice-activated fact-checking"
     ],
-    buttonText: "Contact Sales"
+    buttonText: "Join Premium",
+    buttonVariant: "premium"
   }
 ];
 
@@ -91,7 +103,7 @@ export const Pricing = () => {
             <button 
               className={`px-4 py-2 rounded-l-full ${
                 billingInterval === "monthly" 
-                  ? "bg-clarityx-purple text-white" 
+                  ? "bg-gray-700 text-white" 
                   : "bg-gray-800 text-gray-300"
               }`}
               onClick={() => setBillingInterval("monthly")}
@@ -101,29 +113,29 @@ export const Pricing = () => {
             <button 
               className={`px-4 py-2 rounded-r-full ${
                 billingInterval === "yearly" 
-                  ? "bg-clarityx-purple text-white" 
+                  ? "bg-gray-700 text-white" 
                   : "bg-gray-800 text-gray-300"
               }`}
               onClick={() => setBillingInterval("yearly")}
             >
-              Yearly <span className="text-xs opacity-75">Save 20%</span>
+              Yearly <span className="text-xs opacity-75">Save 15%</span>
             </button>
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {plans.map((plan) => (
             <Card 
               key={plan.id}
               className={`border ${
                 plan.popular 
-                  ? "border-clarityx-purple/50 glass-card relative overflow-hidden" 
+                  ? "border-gray-500/50 glass-card relative overflow-hidden" 
                   : "border-gray-800 bg-gray-900/30"
               }`}
             >
               {plan.popular && (
                 <div className="absolute top-0 right-0">
-                  <div className="bg-clarityx-purple text-white px-3 py-1 text-xs font-medium rounded-bl-lg">
+                  <div className="bg-gray-700 text-white px-3 py-1 text-xs font-medium rounded-bl-lg">
                     Most Popular
                   </div>
                 </div>
@@ -139,16 +151,22 @@ export const Pricing = () => {
                   <span className="text-4xl font-bold text-white">
                     {billingInterval === "monthly" ? plan.price : plan.yearlyPrice}
                   </span>
-                  {" "}
-                  <span className="text-gray-400">
-                    /{billingInterval}
-                  </span>
+                  {plan.id !== "free" && (
+                    <span className="text-gray-400">
+                      /per month
+                    </span>
+                  )}
+                  {plan.id === "free" && (
+                    <span className="text-gray-400">
+                      /forever
+                    </span>
+                  )}
                 </div>
                 
                 <ul className="space-y-3">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <Check className={`h-5 w-5 mt-0.5 ${plan.popular ? "text-clarityx-purple" : "text-green-500"}`} />
+                      <Check className={`h-5 w-5 mt-0.5 ${plan.popular ? "text-white" : "text-green-500"}`} />
                       <span className="text-gray-300">{feature}</span>
                     </li>
                   ))}
@@ -156,16 +174,30 @@ export const Pricing = () => {
               </CardContent>
               
               <CardFooter>
-                <Button 
-                  className={`w-full ${
-                    plan.popular 
-                      ? "bg-clarityx-purple hover:bg-clarityx-purple/90" 
-                      : "bg-gray-800 hover:bg-gray-700"
-                  }`}
-                  onClick={() => handlePlanSelection(plan)}
-                >
-                  {plan.buttonText}
-                </Button>
+                {plan.buttonVariant === "free" && (
+                  <Button 
+                    className="w-full bg-gray-800 hover:bg-gray-700 text-white"
+                    onClick={() => handlePlanSelection(plan)}
+                  >
+                    {plan.buttonText}
+                  </Button>
+                )}
+                {plan.buttonVariant === "default" && (
+                  <GlowButton 
+                    className="w-full bg-gradient-to-r from-gray-700 to-gray-600"
+                    onClick={() => handlePlanSelection(plan)}
+                  >
+                    {plan.buttonText}
+                  </GlowButton>
+                )}
+                {plan.buttonVariant === "premium" && (
+                  <Button 
+                    className="w-full bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-500 hover:to-gray-600 text-white"
+                    onClick={() => handlePlanSelection(plan)}
+                  >
+                    {plan.buttonText}
+                  </Button>
+                )}
               </CardFooter>
             </Card>
           ))}

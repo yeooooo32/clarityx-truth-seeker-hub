@@ -1,19 +1,11 @@
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Download, ArrowRight } from "lucide-react";
+import { Download } from "lucide-react";
 import { AppDownloadModal } from "./AppDownloadModal";
 import { GlowButton } from "@/components/ui/custom-button";
 
 export const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
   
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-16">
@@ -33,23 +25,14 @@ export const Hero = () => {
           ClarityX lets you instantly verify headlines, posts, and links — powered by AI and truth.
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
+        <div className="flex justify-center animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
           <GlowButton
             onClick={() => setIsModalOpen(true)}
-            className="px-8 py-6 text-lg"
+            className="px-8 py-6 text-lg bg-gradient-to-br from-gray-700 to-gray-900 hover:from-gray-600 hover:to-gray-800 shadow-xl border border-white/5"
           >
             <Download className="mr-2 h-5 w-5" />
             Download Now
           </GlowButton>
-          <Button 
-            variant="outline" 
-            size="lg" 
-            className="bg-white/5 border-white/10 text-white font-medium px-8 py-6 rounded-full text-lg hover:bg-white/10 transition-all"
-            onClick={() => scrollToSection('pricing')}
-          >
-            Learn More
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
         </div>
         
         <div className="mt-16 flex justify-center animate-fade-in-up" style={{ animationDelay: "0.6s" }}>

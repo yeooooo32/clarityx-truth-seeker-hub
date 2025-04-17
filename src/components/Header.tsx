@@ -2,6 +2,13 @@
 import { Button } from "@/components/ui/button";
 import { User } from "lucide-react";
 import { Link } from "react-router-dom";
+import { 
+  DropdownMenu, 
+  DropdownMenuContent, 
+  DropdownMenuItem, 
+  DropdownMenuSeparator, 
+  DropdownMenuTrigger 
+} from "@/components/ui/dropdown-menu";
 
 export const Header = () => {
   const scrollToSection = (sectionId: string) => {
@@ -26,12 +33,31 @@ export const Header = () => {
           >
             Pricing
           </Button>
-          <Button 
-            className="rounded-full w-10 h-10 p-0 bg-white/10 hover:bg-white/20 border border-white/10"
-            onClick={() => alert('User profile clicked - This would open the login/signup modal')}
-          >
-            <User className="h-5 w-5" />
-          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button 
+                className="rounded-full w-10 h-10 p-0 bg-white/10 hover:bg-white/20 border border-white/10"
+              >
+                <User className="h-5 w-5" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-56 bg-gray-900 border border-white/10 text-white">
+              <DropdownMenuItem className="hover:bg-white/10 cursor-pointer">
+                Profile
+              </DropdownMenuItem>
+              <DropdownMenuItem className="hover:bg-white/10 cursor-pointer">
+                Dashboard
+              </DropdownMenuItem>
+              <DropdownMenuSeparator className="bg-white/10" />
+              <DropdownMenuItem className="hover:bg-white/10 cursor-pointer">
+                Settings
+              </DropdownMenuItem>
+              <DropdownMenuSeparator className="bg-white/10" />
+              <DropdownMenuItem className="hover:bg-white/10 cursor-pointer text-red-400">
+                Log out
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </header>
