@@ -1,7 +1,9 @@
+
 import { Button } from "@/components/ui/button";
-import { User } from "lucide-react";
+import { User, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+
 export const Header = () => {
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
@@ -11,6 +13,7 @@ export const Header = () => {
       });
     }
   };
+
   return <header className="absolute top-0 left-0 right-0 py-4 px-6 md:px-10 z-10">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <Link to="/" className="flex items-center gap-2">
@@ -28,12 +31,11 @@ export const Header = () => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56 bg-gray-900 border border-white/10 text-white">
-              
-              
-              <DropdownMenuSeparator className="bg-white/10" />
               <DropdownMenuItem className="hover:bg-white/10 cursor-pointer">
-                Settings
+                <Mail className="mr-2 h-4 w-4" />
+                sales@clarityx.info
               </DropdownMenuItem>
+              
               <DropdownMenuSeparator className="bg-white/10" />
               <DropdownMenuItem className="hover:bg-white/10 cursor-pointer text-red-400">
                 Log out
