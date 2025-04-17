@@ -3,9 +3,17 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Download, ArrowRight } from "lucide-react";
 import { AppDownloadModal } from "./AppDownloadModal";
+import { GlowButton } from "@/components/ui/custom-button";
 
 export const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-16">
@@ -26,15 +34,19 @@ export const Hero = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
-          <Button 
-            size="lg" 
-            className="bg-gradient-to-r from-clarityx-purple to-clarityx-blue text-white font-medium px-8 py-6 rounded-full text-lg animate-pulse-glow hover:shadow-lg hover:-translate-y-1 transition-all"
+          <GlowButton
             onClick={() => setIsModalOpen(true)}
+            className="px-8 py-6 text-lg"
           >
             <Download className="mr-2 h-5 w-5" />
             Download Now
-          </Button>
-          <Button variant="outline" size="lg" className="bg-white/5 border-white/10 text-white font-medium px-8 py-6 rounded-full text-lg hover:bg-white/10 transition-all">
+          </GlowButton>
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="bg-white/5 border-white/10 text-white font-medium px-8 py-6 rounded-full text-lg hover:bg-white/10 transition-all"
+            onClick={() => scrollToSection('pricing')}
+          >
             Learn More
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>

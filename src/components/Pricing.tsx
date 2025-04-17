@@ -3,12 +3,14 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Check } from "lucide-react";
+import { toast } from "@/components/ui/use-toast";
 
 type PricingPlan = {
   id: string;
   name: string;
   description: string;
   price: string;
+  yearlyPrice: string;
   features: string[];
   popular?: boolean;
   buttonText: string;
@@ -20,6 +22,7 @@ const plans: PricingPlan[] = [
     name: "Free",
     description: "Basic verification for individual users",
     price: "$0",
+    yearlyPrice: "$0",
     features: [
       "10 fact checks per day",
       "Basic verification",
@@ -33,6 +36,7 @@ const plans: PricingPlan[] = [
     name: "Pro",
     description: "Unlimited scans for power users",
     price: "$12",
+    yearlyPrice: "$9",
     popular: true,
     features: [
       "Unlimited fact checks",
@@ -48,6 +52,7 @@ const plans: PricingPlan[] = [
     name: "Team",
     description: "Enterprise-grade tools for organizations",
     price: "$49",
+    yearlyPrice: "$39",
     features: [
       "Everything in Pro",
       "Team dashboard & analytics",
@@ -62,6 +67,14 @@ const plans: PricingPlan[] = [
 
 export const Pricing = () => {
   const [billingInterval, setBillingInterval] = useState<"monthly" | "yearly">("monthly");
+  
+  const handlePlanSelection = (plan: PricingPlan) => {
+    toast({
+      title: `Selected ${plan.name} Plan`,
+      description: `You've selected the ${plan.name} plan. ${plan.id === 'free' ? 'Get started now!' : 'Please complete your purchase.'}`,
+      variant: "default",
+    });
+  };
   
   return (
     <section className="py-20 px-6" id="pricing">
@@ -124,7 +137,7 @@ export const Pricing = () => {
               <CardContent>
                 <div className="mb-6">
                   <span className="text-4xl font-bold text-white">
-                    {plan.price}
+                    {billingInterval === "monthly" ? plan.price : plan.yearlyPrice}
                   </span>
                   {" "}
                   <span className="text-gray-400">
@@ -149,6 +162,7 @@ export const Pricing = () => {
                       ? "bg-clarityx-purple hover:bg-clarityx-purple/90" 
                       : "bg-gray-800 hover:bg-gray-700"
                   }`}
+                  onClick={() => handlePlanSelection(plan)}
                 >
                   {plan.buttonText}
                 </Button>

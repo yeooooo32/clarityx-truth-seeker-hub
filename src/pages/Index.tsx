@@ -2,7 +2,6 @@
 import { ParticleBackground } from "@/components/Particles";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { FeatureHighlights } from "@/components/FeatureHighlights";
 import { TrustSignals } from "@/components/TrustSignals";
 import { Testimonials } from "@/components/Testimonials";
 import { Pricing } from "@/components/Pricing";
@@ -15,7 +14,6 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <FeatureHighlights />
         <TrustSignals />
         <Testimonials />
         <Pricing />

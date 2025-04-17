@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export const TrustSignals = () => {
   return (
-    <section className="py-16 px-6 bg-black/40">
+    <section id="trust-signals" className="py-16 px-6 bg-black/40">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4 text-white text-glow">
